@@ -1,3 +1,4 @@
+@use "sass:math";
 // 미디어 쿼리 중단점 (Breakpoints) --------------------------------------------------------------- /
 $breakpoint: 950px;
 
@@ -29,12 +30,12 @@ $rootUnit: 16px !default;
 
 // 단위 제거 함수 ------------------------------------------------------------------ /
 @function removeUnit($value){
-  @return ($value / ($value * 0 + 1));
+  @return (math.div($value, ($value * 0 + 1)));
 }
 
 // px을 rem 단위로 변경하는 함수 ------------------------------------------------------- /
 @function rem($value, $base: $rootUnit){
-  @return (removeUnit($value / $base)) * 1rem;
+  @return (removeUnit(math.div($value, $base))) * 1rem;
 }
 
 // px을 em 단위로 변경하는 함수 ------------------------------------------------------- /
@@ -57,6 +58,26 @@ $rootUnit: 16px !default;
   margin-right: $marginX;
 }
 
+@mixin marginY($marginY: 16px) {
+  margin-top: rem($marginY);
+  margin-bottom: rem($marginY);
+}
+
+@mixin marginX($marginX: 16px) {
+  margin-left: rem($marginX);
+  margin-right: rem($marginX);
+}
+
+@mixin paddingY($paddingY: 16px) {
+  padding-top: rem($paddingY);
+  padding-bottom: rem($paddingY);
+}
+
+@mixin paddingX($paddingX: 16px) {
+  padding-left: rem($paddingX);
+  padding-right: rem($paddingX);
+}
+
 // 플렉스 박스 믹스인 ---------------------------------------------------------------- /
 @mixin flexbox($direction: row, $justify: flex-start, $items: stretch, $wrap: nowrap) {
   display: flex;
@@ -64,3 +85,17 @@ $rootUnit: 16px !default;
   justify-content: $justify;
   align-items: $items;
 }
+
+//반응형 이미지
+@mixin responsiveImg {
+  max-width: 100%;
+  height: auto;
+}
+
+//반응형 비디오 및 svg 요소
+@mixin responsiveMedia {
+  width: 100%;
+  height: 100%;
+}
+
+
