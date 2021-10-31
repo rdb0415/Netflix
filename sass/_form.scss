@@ -42,3 +42,72 @@
     }
   }
 }
+
+// 이메일 주소 입력 서식
+.form-input{
+  position: relative;
+  width: 75%;
+  @include desktop{
+    width: rem(560px);
+  }
+
+  &__input{
+    appearance: none;
+    color: $gray500;
+    width: 100%;
+    height: rem(40px);
+    @include paddingX(20px);
+    border: 0;
+    border-radius: rem(12px);
+    @include desktop{
+      height: rem(64px);
+      padding-top: rem(12px);
+      border-radius: 0;
+    }
+  }
+
+  &__label{
+    color: $gray500;
+    position: absolute;
+    left: rem(20px);
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: rem(14px);
+    @include desktop{
+      font-size: rem(16px);
+    }
+  }
+  &__input:focus + &__label {
+    top: -15%;
+    color: $white;
+    font-size: rem(12px);
+  }
+}
+
+// 버튼
+.button-membership{
+  color: inherit;
+  background-color: $red500;
+  border: 0;
+  font-size: rem(14px);
+  font-weight: 700;
+  @include flexbox($items: center);
+  height: rem(40px);
+  padding: rem(6px) rem(20px);
+  margin-top: rem(12px);
+  border-radius: rem(12px);
+  @include desktop{
+    font-size: rem(16px);
+    height: rem(64px);
+    padding: rem(8px) rem(20px);
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+.icon-arrow{
+  margin-left: rem(8px);
+  width: rem(16px);
+  height: rem(16px);
+}

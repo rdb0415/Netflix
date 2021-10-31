@@ -10,7 +10,7 @@ body {
 .header {
   @include flexbox($items: center);
   height: rem(80px);
-  padding-bottom: rem(20px) rem(24px);
+  padding: rem(20px) rem(24px);
   @include desktop {
     height: rem(140px);
     padding: rem(40px) rem(20px);
